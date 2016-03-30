@@ -10,6 +10,8 @@
 #include <string.h>
 #include <iostream>
 #include <stdio.h>
+#include "EnumOrigen.h"
+
 
 using namespace std;
 
