@@ -16,8 +16,9 @@ private:
 	int mm;
 	int aaaa;
 public:
-	Date(int dd, int mm, int aaaa);
+	Date();
 	virtual ~Date();
+
 };
 
 } /* namespace std */

@@ -7,10 +7,11 @@
 
 #ifndef GOLOSINA_H_
 #define GOLOSINA_H_
-#include "Date.h"
 #include <string.h>
+#include <iostream>
+#include "Date.h"
 
-namespace std {
+using namespace std;
 
 class Golosina {
 private:
@@ -29,7 +30,4 @@ public:
 
 
 };
-
-} /* namespace std */
-
 #endif /* GOLOSINA_H_ */

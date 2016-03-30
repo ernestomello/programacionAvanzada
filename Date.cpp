@@ -9,10 +9,10 @@
 
 namespace std {
 
-Date::Date(int dd, int mm, int aaaa) {
-	this->dd = dd;
-	this->mm = mm;
-	this->aaaa = aaaa;
+Date::Date() {
+	this->dd = 1;
+	this->mm = 1;
+	this->aaaa = 1900;
 	// TODO Apéndice de constructor generado automáticamente
 
 }

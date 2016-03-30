@@ -9,9 +9,12 @@
 #include "Date.h"
 #include <string.h>
 
-namespace std {
+
 
 Golosina::Golosina() {
+	precio = 0;
+	nombre = " ";
+	fecha_venc = Date();
 	// TODO Apéndice de constructor generado automáticamente
 
 }
@@ -38,4 +41,4 @@ Date Golosina::getFecha_venc(){
 	return fecha_venc;
 }
 
-} /* namespace std */
+
