@@ -11,7 +11,7 @@
 
 
 
-Golosina::Golosina() {
+virtual Golosina::Golosina() {
 	precio = 0;
 	nombre = " ";
 	fecha_venc = Date();
@@ -19,26 +19,24 @@ Golosina::Golosina() {
 
 }
 
-Golosina::~Golosina() {
+virtual Golosina::~Golosina() {
 	// TODO !CodeTemplates.destructorstub.tododesc!
 }
-void Golosina::setNombre(string nombre){
+virtual void Golosina::setNombre(string nombre){
 	this->nombre = nombre;
 }
-string Golosina::getNombre(){
+virtual string Golosina::getNombre(){
 	return nombre;
 }
-void Golosina::setPrecio(float precio){
+virtual void Golosina::setPrecio(float precio){
 	this->precio = precio;
 }
-float Golosina::getPrecio(){
+virtual float Golosina::getPrecio(){
 	return precio;
 }
-void Golosina::setFecha_venc(Date fecha){
+virtual void Golosina::setFecha_venc(Date fecha){
 	this->fecha_venc = fecha;
 }
-Date Golosina::getFecha_venc(){
+virtual Date Golosina::getFecha_venc(){
 	return fecha_venc;
 }
-
-

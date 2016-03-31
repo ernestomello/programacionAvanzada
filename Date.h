@@ -17,6 +17,7 @@ private:
 	int aaaa;
 public:
 	Date();
+	Date(int,int,int);
 	virtual ~Date();
 
 };

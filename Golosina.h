@@ -21,12 +21,14 @@ private:
 public:
 	Golosina();
 	virtual ~Golosina();
-	void setNombre(string nombre);
-	string getNombre();
-	void setPrecio(float precio);
-	float getPrecio();
-	void setFecha_venc(Date fecha);
-	Date getFecha_venc();
+
+	virtual void setNombre(string nombre);
+	virtual void setPrecio(float precio);
+	virtual void setFecha_venc(Date fecha);
+
+	virtual string getNombre();
+	virtual float getPrecio();
+	virtual Date getFecha_venc();
 
 
 };
