@@ -9,9 +9,9 @@
 #include "Date.h"
 #include <string.h>
 
+using namespace std;
 
-
-virtual Golosina::Golosina() {
+Golosina::Golosina() {
 	precio = 0;
 	nombre = " ";
 	fecha_venc = Date();
@@ -19,24 +19,30 @@ virtual Golosina::Golosina() {
 
 }
 
-virtual Golosina::~Golosina() {
+Golosina::~Golosina() {
 	// TODO !CodeTemplates.destructorstub.tododesc!
 }
-virtual void Golosina::setNombre(string nombre){
+void Golosina::setNombre(string nombre){
 	this->nombre = nombre;
 }
-virtual string Golosina::getNombre(){
+string Golosina::getNombre(){
 	return nombre;
 }
-virtual void Golosina::setPrecio(float precio){
+void Golosina::setPrecio(float precio){
 	this->precio = precio;
 }
-virtual float Golosina::getPrecio(){
+float Golosina::getPrecio(){
 	return precio;
 }
-virtual void Golosina::setFecha_venc(Date fecha){
+void Golosina::setFecha_venc(Date fecha){
 	this->fecha_venc = fecha;
 }
-virtual Date Golosina::getFecha_venc(){
+ Date Golosina::getFecha_venc(){
 	return fecha_venc;
+}
+void Golosina::setNombre_fabricante(Fabricante nombre_fabricante){
+	this->nombre_fabricante = nombre_fabricante;
+}
+Fabricante Golosina::getNombreFabricante(){
+	return this->nombre_fabricante;
 }

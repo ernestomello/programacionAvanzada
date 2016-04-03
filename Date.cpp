@@ -4,7 +4,7 @@
  *  Created on: 29 de mar. de 2016
  *      Author: ernesto
  */
-
+#include <iostream>
 #include "Date.h"
 
 namespace std {
@@ -17,19 +17,46 @@ Date::Date() {
 
 }
 Date::Date(int dd,int mm, int aaaa) {
+	try {
 	if (mm > 0 && mm<=12 )
 		this->mm = mm;
 	else
-		this->mm = 1;
+		throw(mm);
 
 	if (aaaa >= 1900)
-		this->aaaa = aaaa;
+			this->aaaa = aaaa;
 	else
-		this->aaaa =1900;
+		throw (aaaa);
+
 	if (dd > 0 && dd<= 31)
-		this->dd = dd;
-	else
-		this->dd = 1;
+			this->dd = dd;
+		else
+			throw (dd);
+	}
+	catch(int mm){
+		cout << "Fecha mal ingresada";
+	}
+
+
+
+
+
+
+	/*
+
+	if (mm > 0 && mm<=12 )
+			this->mm = mm;
+		else
+			this->mm = 1;
+
+		if (aaaa >= 1900)
+			this->aaaa = aaaa;
+		else
+			this->aaaa =1900;
+		if (dd > 0 && dd<= 31)
+			this->dd = dd;
+		else
+			this->dd = 1;*/
 
 	// TODO Apéndice de constructor generado automáticamente
 

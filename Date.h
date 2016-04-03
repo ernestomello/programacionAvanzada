@@ -17,7 +17,7 @@ private:
 	int aaaa;
 public:
 	Date();
-	Date(int,int,int);
+	Date(int dd,int mm,int aaaa);
 	virtual ~Date();
 
 };

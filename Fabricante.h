@@ -10,10 +10,13 @@
 #include <string.h>
 #include <iostream>
 #include <stdio.h>
-#include "EnumOrigen.h"
+
+enum  EnumOrigen{ // Será utilizada para definir el Origen del fabricante
+	Nacional, Importado
+};
 
 
-using namespace std;
+namespace std{
 
 class Fabricante {
 private:
@@ -23,7 +26,8 @@ private:
 	string pais;
 public:
 	Fabricante();
+	Fabricante(string nombre, string rut, EnumOrigen origen, string pais);
 	virtual ~Fabricante();
 };
-
+}
 #endif /* FABRICANTE_H_ */

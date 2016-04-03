@@ -6,13 +6,25 @@
  */
 
 #include "Fabricante.h"
+namespace std{
 
-Fabricante::Fabricante() {
+Fabricante::Fabricante(){
+	this->nombre = "";
+	this->rut = "";
+	this->origen = Nacional;
+	this->pais = "";
 	// TODO Apéndice de constructor generado automáticamente
-
 }
 
-Fabricante::~Fabricante() {
+Fabricante::Fabricante(string nombre, string rut, EnumOrigen origen, string pais){
+	this->nombre = nombre;
+	this->rut = rut;
+	this->origen = origen;
+	this->pais = pais;
+	// TODO Apéndice de constructor generado automáticamente
+}
+Fabricante::~Fabricante(){
 	// TODO !CodeTemplates.destructorstub.tododesc!
 }
 
+}

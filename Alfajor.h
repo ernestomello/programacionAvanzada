@@ -1,38 +1,34 @@
 /*
- * Caramelo.h
+ * Alfajor.h
  *
- *  Created on: 31 de mar. de 2016
+ *  Created on: 3 de abr. de 2016
  *      Author: ernesto
  */
 
-#ifndef CARAMELO_H_
-#define CARAMELO_H_
+#ifndef ALFAJOR_H_
+#define ALFAJOR_H_
 
 #include "Golosina.h"
-#include "Fabricante.h"
 
 namespace std {
 
-class Caramelo: public Golosina {
-private:
-	string sabor;
+class Alfajor: public Golosina {
 public:
-	Caramelo();
-	virtual ~Caramelo();
+	Alfajor();
+	virtual ~Alfajor();
 
 	void setNombre(string nombre);
 	void setPrecio(float precio);
 	void setFecha_venc(Date fecha);
-	void setSabor(string sabor);
 	void setNombre_fabricante(Fabricante nombre_fabricante);
 
 	string getNombre();
 	float getPrecio();
 	Date getFecha_venc();
-	string getSabor();
 	Fabricante getNombreFabricante();
+
 };
 
 } /* namespace std */
 
-#endif /* CARAMELO_H_ */
+#endif /* ALFAJOR_H_ */
