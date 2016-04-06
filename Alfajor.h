@@ -9,6 +9,7 @@
 #define ALFAJOR_H_
 
 #include "Golosina.h"
+#include "Fabricante.h"
 
 namespace std {
 
@@ -20,12 +21,12 @@ public:
 	void setNombre(string nombre);
 	void setPrecio(float precio);
 	void setFecha_venc(Date fecha);
-	void setNombre_fabricante(Fabricante nombre_fabricante);
+
 
 	string getNombre();
 	float getPrecio();
 	Date getFecha_venc();
-	Fabricante getNombreFabricante();
+
 
 };
 

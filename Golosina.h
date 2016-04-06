@@ -10,7 +10,7 @@
 #include <string.h>
 #include <iostream>
 #include "Date.h"
-#include "Fabricante.h"
+
 
 using namespace std;
 
@@ -19,7 +19,6 @@ private:
 	string nombre;
 	float precio;
 	Date fecha_venc;
-	Fabricante  nombre_fabricante;
 public:
 	Golosina();
 	virtual ~Golosina();
@@ -27,14 +26,11 @@ public:
 	virtual void setNombre(string nombre);
 	virtual void setPrecio(float precio);
 	virtual void setFecha_venc(Date fecha);
-	virtual void setNombre_fabricante(Fabricante nombre_fabricante);
+
 
 	virtual string getNombre();
 	virtual float getPrecio();
 	virtual Date getFecha_venc();
-	virtual Fabricante getNombreFabricante();
-
-
 };
 
 

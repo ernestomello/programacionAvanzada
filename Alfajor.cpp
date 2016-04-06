@@ -6,6 +6,7 @@
  */
 
 #include "Alfajor.h"
+#include "Fabricante.h"
 
 namespace std {
 
@@ -26,9 +27,6 @@ void Alfajor::setPrecio(float precio){
 void Alfajor::setFecha_venc(Date fecha){
 	Golosina::setFecha_venc(fecha);
 }
-void Alfajor::setNombre_fabricante(Fabricante nombre_fabricante){
-	Golosina::setNombre_fabricante(nombre_fabricante);
-}
 
 string Alfajor::getNombre(){
 	return Golosina::getNombre();
@@ -40,8 +38,6 @@ float Alfajor::getPrecio(){
 Date Alfajor::getFecha_venc(){
 	return Golosina::getFecha_venc();
 }
-Fabricante Alfajor::getNombreFabricante(){
-	return Golosina::getNombreFabricante();
-}
+
 
 } /* namespace std */

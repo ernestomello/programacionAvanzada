@@ -28,9 +28,7 @@ void Caramelo::setFecha_venc(Date fecha){
 void Caramelo::setPrecio(float precio){
 	Golosina::setPrecio(precio);
 }
-void Caramelo::setNombre_fabricante(Fabricante nombre_fabricante){
-Golosina::setNombre_fabricante(nombre_fabricante);
-}
+
 void Caramelo::setSabor(string sabor){
 	this->sabor = sabor;
 }
@@ -45,9 +43,7 @@ float Caramelo::getPrecio(){
 Date Caramelo::getFecha_venc(){
 	return Golosina::getFecha_venc();
 }
-Fabricante Caramelo::getNombreFabricante(){
-	return Golosina::getNombreFabricante();
-}
+
 string Caramelo::getSabor(){
 	return sabor;
 }

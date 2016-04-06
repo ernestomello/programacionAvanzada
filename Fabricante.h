@@ -10,6 +10,7 @@
 #include <string.h>
 #include <iostream>
 #include <stdio.h>
+#include "Golosina.h"
 
 enum  EnumOrigen{ // Será utilizada para definir el Origen del fabricante
 	Nacional, Importado
@@ -24,10 +25,22 @@ private:
 	string rut;
 	EnumOrigen origen;
 	string pais;
+	Golosina * golosinas;
+
 public:
 	Fabricante();
 	Fabricante(string nombre, string rut, EnumOrigen origen, string pais);
 	virtual ~Fabricante();
+	string getNombre();
+	string getRut();
+	string getPais();
+	EnumOrigen getOrigen();
+	bool tieneGolosina(string golosina);
+	void setNombre(string nombre);
+	void setRut(string rut);
+	void setPais(string pais);
+	void setOrigen(EnumOrigen origen);
+
 };
 }
 #endif /* FABRICANTE_H_ */

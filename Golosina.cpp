@@ -40,9 +40,5 @@ void Golosina::setFecha_venc(Date fecha){
  Date Golosina::getFecha_venc(){
 	return fecha_venc;
 }
-void Golosina::setNombre_fabricante(Fabricante nombre_fabricante){
-	this->nombre_fabricante = nombre_fabricante;
-}
-Fabricante Golosina::getNombreFabricante(){
-	return this->nombre_fabricante;
-}
+
+

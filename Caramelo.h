@@ -9,7 +9,7 @@
 #define CARAMELO_H_
 
 #include "Golosina.h"
-#include "Fabricante.h"
+
 
 namespace std {
 
@@ -24,13 +24,13 @@ public:
 	void setPrecio(float precio);
 	void setFecha_venc(Date fecha);
 	void setSabor(string sabor);
-	void setNombre_fabricante(Fabricante nombre_fabricante);
+
 
 	string getNombre();
 	float getPrecio();
 	Date getFecha_venc();
 	string getSabor();
-	Fabricante getNombreFabricante();
+
 };
 
 } /* namespace std */
