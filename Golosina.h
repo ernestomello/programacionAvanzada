@@ -17,19 +17,22 @@ using namespace std;
 class Golosina {
 private:
 	string nombre;
-	float precio;
+	double precio;
 	Date fecha_venc;
 public:
+	//Golosina operator<<(DtAlfajor);
+	//Golosina operator<<(DtGolosina);
 	Golosina();
+	Golosina(string nombre,double precio, Date fecha);
 	virtual ~Golosina();
 
 	virtual void setNombre(string nombre);
-	virtual void setPrecio(float precio);
+	virtual void setPrecio(double precio);
 	virtual void setFecha_venc(Date fecha);
 
 
 	virtual string getNombre();
-	virtual float getPrecio();
+	virtual double getPrecio();
 	virtual Date getFecha_venc();
 };
 

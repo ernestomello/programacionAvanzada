@@ -9,8 +9,13 @@
 
 using namespace std;
 
+
 Caramelo::Caramelo() {
 	// TODO Apéndice de constructor generado automáticamente
+}
+Caramelo::Caramelo(string nombre, double precio, Date fecha, string sabor){
+	Golosina(nombre, precio, fecha);
+	this->sabor = sabor;
 }
 Caramelo::~Caramelo() {
 	// TODO !CodeTemplates.destructorstub.tododesc!
@@ -25,7 +30,7 @@ void Caramelo::setFecha_venc(Date fecha){
 	Golosina::setFecha_venc(fecha);
 }
 
-void Caramelo::setPrecio(float precio){
+void Caramelo::setPrecio(double precio){
 	Golosina::setPrecio(precio);
 }
 
@@ -37,7 +42,7 @@ string Caramelo::getNombre(){
 	return Golosina::getNombre();
 }
 
-float Caramelo::getPrecio(){
+double Caramelo::getPrecio(){
 	return Golosina::getPrecio();
 }
 Date Caramelo::getFecha_venc(){

@@ -23,6 +23,7 @@ private:
 
 public:
 	DtGolosina();
+	DtGolosina(double precio, string nombre, Date* fecha_venc, string nombre_fabricante, string origen);
 	virtual ~DtGolosina();
 
 	virtual string getNombre();

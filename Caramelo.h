@@ -18,16 +18,17 @@ private:
 	string sabor;
 public:
 	Caramelo();
+	Caramelo(string nombre, double precio, Date fecha, string sabor);
 	virtual ~Caramelo();
 
 	void setNombre(string nombre);
-	void setPrecio(float precio);
+	void setPrecio(double precio);
 	void setFecha_venc(Date fecha);
 	void setSabor(string sabor);
 
 
 	string getNombre();
-	float getPrecio();
+	double getPrecio();
 	Date getFecha_venc();
 	string getSabor();
 

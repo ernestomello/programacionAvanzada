@@ -6,10 +6,12 @@
  */
 #include "Fabricante.h"
 #include "Golosina.h"
+#include "Caramelo.h"
+#include "Alfajor.h"
 #include "DtGolosina.h"
 #include <fstream>
 #include <string.h>
-#include<stdio.h>
+#include <stdio.h>
 
 #define MAX_FABRICANTES 10
 
@@ -23,7 +25,7 @@ void agregarFabricante(string nombre,string pais,string rut, EnumOrigen origen);
 string* listarFabricantes(int & cant_fabricantes);
 
 //Función punto 2.c
-void agregarGolosina(string nombre_fabricante, DtGolosina& golosina);
+void agregarGolosina(string nombre_fabricante, DtGolosina &golosina);
 
 //Función punto 2.d
 void eliminarGolosina(string nombre_fabricante, string nombre_golosina);
@@ -34,6 +36,10 @@ DtGolosina** obtenerInfoGolosinasPorFabricante(string nombre_fabricante, int& ca
 //Funciones auciliares
 void limpiarFabricantes();
 void ingresoDeFabricantes();
+void ingresoDeGolosinas();
+void borrarFabricante();
+void borrarGolosina();
+
 using namespace std;
 
 
@@ -71,7 +77,9 @@ while ( sigue != 'n'){
 	cin>>rut;
 	cout<<"\nIngrese Origen (Nacional, Importado) : ";
 	cin>>origen;
-	//if (strcmp(origen,"Nacional") != 0  )
+	if (strcmp(origen.c_str(),"Nacional") != 0  )
+		origenE=Importado;
+	else
 		origenE = Nacional;
 
 	agregarFabricante(nombre, pais,rut,origenE);
@@ -97,7 +105,113 @@ for (int i= 0; i<= cant_fabricantes; i++){
 }
 	return  nombres;
 }
+void ingresoDeGolosinas(){
+	string nombre, origen;
+	double precio;
+
+	DtGolosina* nuevaGol;
+	string nombre_fabricante;
+	char sigue;
+	int dd, mm, aaaa ;
+
+
+	while ( sigue != 'n'){
+		cout<<"Ingreso de Golosinas\n";
+		cout<<"Ingrese Nombre Fabricante: ";
+		cin>>nombre_fabricante;
+		cout<<"Ingrese Nombre : ";
+				cin>>nombre;
+				cout<<"\nIngrese Precio : ";
+				cin>>precio;
+				cout<<"\nIngrese Fecha Venc.: ";
+				cin>>dd;
+				cin>>mm;
+				cin>>aaaa;
+				Date* fecha_venc= new Date(dd,mm,aaaa);
+
+				nuevaGol = new DtGolosina(precio,nombre,fecha_venc,nombre_fabricante,origen);
+
+		agregarGolosina(nombre_fabricante, *nuevaGol);
+		cout<<"\nAgrega Otro? (s/n) ";
+		cin>>sigue;
+	}
+}
+void borrarFabricante(){
+	;
+}
+void borrarGolosina(){
+	;
+}
 
 void agregarGolosina(string nombre_fabricante, DtGolosina& golosina){
+string sabor;
+char cara;
+//Fabricante* fabricantes;
 
+
+
+
+		cout<<"Es un Caramelo ?";
+		cin>>cara;
+		if ( cara == 's'){
+
+			cout<<"Ingrese Sabor";
+			cin>>sabor;
+			Caramelo* caramelo = new Caramelo(golosina.getNombre(),golosina.getPrecio(),golosina.getFecha_venc(),sabor);
+
+		}else{
+			Alfajor* alfajor = new Alfajor(golosina.getNombre(),golosina.getPrecio(),golosina.getFecha_venc());
+		}
+
+		for (int i = 0; i<=MAX_FABRICANTES;i++){
+				if(strcmp(fabricantes[i]->getNombre().c_str(), nombre_fabricante.c_str())==0){
+					if( !fabricantes[i]->tieneGolosina(golosina.getNombre())){
+
+						}
+				}
+			}
+
+
+
+}
+void eliminarGolosina(string nombre_fabricante, string nombre_golosina){
+
+}
+
+//Función punto 2.e
+/*DtGolosina** obtenerInfoGolosinasPorFabricante(string nombre_fabricante, int& cant_golosinas){
+DtGolosina* arreglo_golosinas = new DtGolosina[cant_golosinas]();
+DtGolosina **retorno = &arreglo_golosinas;
+
+
+
+	return retorno;
+}*/
+DtGolosina** obtenerInfoGolosinasPorFabricante(string nombre_fabricante, int& cant_golosinas){
+	int i,k;
+	DtGolosina* arreglo_golosinas = new DtGolosina[cant_golosinas]();
+	DtGolosina auxiliar;
+	DtGolosina **retorno = &arreglo_golosinas;
+	for (i = 0; i <= cant_fab; i++){
+		if (strcmp(fabricantes[i]->getNombre().c_str(),nombre_fabricante.c_str())==0){
+			for (k=0; k<cant_golosinas; k++){
+				fabricantes[i]->getGolosinas(k);
+
+				arreglo_golosinas[k];
+
+			}
+		}
+		else
+			arreglo_golosinas = NULL;
+	}
+	return retorno;
+}
+
+
+void menu(){
+	cout<<"Ingrese 1 para agregar fabricante"<<endl;
+	cout<<"Ingrese 2 para mostrar la lista de fabricantes"<<endl;
+	cout<<"Ingrese 3 para agregar golosina a un fabricante especifico"<<endl;
+	cout<<"Ingrese 4 para mostrar informacion de las golosinas segun su fabricante"<<endl;
+	cout<<"0 - Salir"<<endl;
 }

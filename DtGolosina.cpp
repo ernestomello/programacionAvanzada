@@ -8,9 +8,21 @@
 #include "DtGolosina.h"
 
 namespace std {
-
-DtGolosina::DtGolosina() {
+DtGolosina::DtGolosina(){
 	this->precio = 0;
+	this->nombre = "";
+	this->fecha_venc = Date();
+	this->nombre_fabricante = "";
+	this->origen = "";
+}
+
+DtGolosina::DtGolosina(double precio, string nombre,Date* fecha_venc, string nombre_fabricante, string origen) {
+	this->precio = precio;
+	this->nombre = nombre;
+	this->fecha_venc = new Date(fecha_venc);
+
+	this->nombre_fabricante = nombre_fabricante;
+	this->origen = origen;
 	// TODO Apéndice de constructor generado automáticamente
 
 }

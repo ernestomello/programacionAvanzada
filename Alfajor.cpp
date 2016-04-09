@@ -10,7 +10,8 @@
 
 namespace std {
 
-Alfajor::Alfajor() {
+Alfajor::Alfajor(string nombre, double precio, Date fecha) {
+	Golosina(nombre,precio,fecha);
 	// TODO Apéndice de constructor generado automáticamente
 }
 
@@ -21,7 +22,7 @@ Alfajor::~Alfajor() {
 void Alfajor::setNombre(string nombre){
 	Golosina::setNombre(nombre);
 }
-void Alfajor::setPrecio(float precio){
+void Alfajor::setPrecio(double precio){
 	Golosina::setPrecio(precio);
 }
 void Alfajor::setFecha_venc(Date fecha){
@@ -31,7 +32,7 @@ void Alfajor::setFecha_venc(Date fecha){
 string Alfajor::getNombre(){
 	return Golosina::getNombre();
 }
-float Alfajor::getPrecio(){
+double Alfajor::getPrecio(){
 	return Golosina::getPrecio();
 }
 

@@ -18,6 +18,7 @@ private:
 	string sabor;
 public:
 	DtCaramelo();
+	DtCaramelo(double precio, string nombre, Date* fecha_venc, string nombre_fabricante, string origen,string sabor);
 	virtual ~DtCaramelo();
 
 	string getNombre();

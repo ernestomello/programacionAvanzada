@@ -66,4 +66,8 @@ void Fabricante::setOrigen(EnumOrigen origen){
 	this->origen = origen;
 }
 
+Golosina Fabricante::getGolosinas(int x){
+	return golosinas[x];
+}
+
 }

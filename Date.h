@@ -17,8 +17,12 @@ private:
 	int aaaa;
 public:
 	Date();
+	Date(Date* fecha);
 	Date(int dd,int mm,int aaaa);
 	virtual ~Date();
+	int getDd();
+	int getMm();
+	int getAaa();
 
 };
 

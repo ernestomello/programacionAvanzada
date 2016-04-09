@@ -15,16 +15,16 @@ namespace std {
 
 class Alfajor: public Golosina {
 public:
-	Alfajor();
+	Alfajor(string nombre,double precio,Date fecha);
 	virtual ~Alfajor();
 
 	void setNombre(string nombre);
-	void setPrecio(float precio);
+	void setPrecio(double precio);
 	void setFecha_venc(Date fecha);
 
 
 	string getNombre();
-	float getPrecio();
+	double getPrecio();
 	Date getFecha_venc();
 
 

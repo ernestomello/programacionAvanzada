@@ -17,6 +17,7 @@ class DtAlfajor: public DtGolosina {
 
 public:
 	DtAlfajor();
+	DtAlfajor(double precio, string nombre, Date* fecha_venc, string nombre_fabricante, string origen);
 	virtual ~DtAlfajor();
 
 	string getNombre();

@@ -12,15 +12,20 @@
 using namespace std;
 
 Golosina::Golosina() {
-	precio = 0;
-	nombre = " ";
-	fecha_venc = Date();
+	this->precio = 0;
+	this->nombre = " ";
+	this->fecha_venc = Date();
 	// TODO Apéndice de constructor generado automáticamente
 
 }
-
-Golosina::~Golosina() {
+Golosina::~Golosina(){
 	// TODO !CodeTemplates.destructorstub.tododesc!
+}
+Golosina::Golosina(string nombre,double precio, Date fecha) {
+	this->precio = precio;
+		this->nombre = nombre;
+		this->fecha_venc = fecha;
+
 }
 void Golosina::setNombre(string nombre){
 	this->nombre = nombre;
@@ -28,10 +33,10 @@ void Golosina::setNombre(string nombre){
 string Golosina::getNombre(){
 	return nombre;
 }
-void Golosina::setPrecio(float precio){
+void Golosina::setPrecio(double precio){
 	this->precio = precio;
 }
-float Golosina::getPrecio(){
+double Golosina::getPrecio(){
 	return precio;
 }
 void Golosina::setFecha_venc(Date fecha){
