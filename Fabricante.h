@@ -11,6 +11,7 @@
 #include <iostream>
 #include <stdio.h>
 #include "Golosina.h"
+#define CANT_GOLOSINAS 50
 
 enum  EnumOrigen{ // Será utilizada para definir el Origen del fabricante
 	Nacional, Importado
@@ -35,12 +36,14 @@ public:
 	string getRut();
 	string getPais();
 	EnumOrigen getOrigen();
-	Golosina getGolosinas(int x);
+	Golosina getGolosinas(int a);
+	Golosina* getPunteroGolosinas(int x);
 	bool tieneGolosina(string golosina);
 	void setNombre(string nombre);
 	void setRut(string rut);
 	void setPais(string pais);
 	void setOrigen(EnumOrigen origen);
+	void setGolosinas(Golosina *golosina);
 
 
 };

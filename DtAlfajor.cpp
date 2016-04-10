@@ -14,7 +14,7 @@ DtAlfajor::DtAlfajor(){
 	DtGolosina();
 }
 
-DtAlfajor::DtAlfajor(double precio,string nombre,Date* fecha_venc, string nombre_fabricante, string origen){
+DtAlfajor::DtAlfajor(double precio,string nombre,Date fecha_venc, string nombre_fabricante, string origen){
 	DtGolosina(precio,nombre,fecha_venc,nombre_fabricante,origen);
 
 }
@@ -43,6 +43,19 @@ string DtAlfajor::getNombre_fabricante(){
 
 string DtAlfajor::getOrigen(){
 	return DtGolosina::getOrigen();
+}
+string DtAlfajor::getTipo(){
+	return "Alfajor";
+}
+ostream &operator<< (ostream& output, DtAlfajor& alfajor ){
+
+	output << "Nombre Golosina: "<< alfajor.getNombre()<<"\n"
+			<<"Precio: "<< alfajor.getPrecio()<<"\n"
+			<<"Nombre Fabricante: " << alfajor.getNombre_fabricante()<<"\n"
+			<<"Origen: "<< alfajor.getOrigen()<<"\n"
+			<<"Tipo "<< alfajor.getTipo();
+
+	return output ;
 }
 
 } /* namespace std */

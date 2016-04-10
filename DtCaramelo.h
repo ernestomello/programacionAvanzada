@@ -8,6 +8,7 @@
 #ifndef DTCARAMELO_H_
 #define DTCARAMELO_H_
 #include "Date.h"
+#include <iostream>
 #include <string.h>
 #include "DtGolosina.h"
 
@@ -18,7 +19,7 @@ private:
 	string sabor;
 public:
 	DtCaramelo();
-	DtCaramelo(double precio, string nombre, Date* fecha_venc, string nombre_fabricante, string origen,string sabor);
+	DtCaramelo(double precio, string nombre, Date fecha_venc, string nombre_fabricante, string origen,string sabor);
 	virtual ~DtCaramelo();
 
 	string getNombre();
@@ -27,6 +28,8 @@ public:
 	string getNombre_fabricante();
 	string getOrigen();
 	string getSabor();
+	string getTipo();
+	friend ostream &operator<< (ostream& output, const DtCaramelo & caramelo );
 };
 
 } /* namespace std */

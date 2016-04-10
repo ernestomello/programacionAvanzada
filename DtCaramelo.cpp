@@ -14,7 +14,7 @@ DtCaramelo::DtCaramelo(){
 	this->sabor = sabor;
 
 }
-DtCaramelo::DtCaramelo(double precio, string nombre, Date* fecha_venc,string nombre_fabricante, string origen, string sabor) {
+DtCaramelo::DtCaramelo(double precio, string nombre, Date fecha_venc,string nombre_fabricante, string origen, string sabor) {
 	DtGolosina(precio,nombre,fecha_venc,nombre_fabricante,origen);
 	this->sabor = sabor;
 	// TODO Apéndice de constructor generado automáticamente
@@ -42,6 +42,19 @@ string DtCaramelo::getNombre_fabricante(){
 
 string DtCaramelo::getOrigen(){
 	return DtGolosina::getOrigen();
+}
+string DtCaramelo::getTipo(){
+	return "Caramelo";
+}
+ostream &operator<< (ostream& output, DtCaramelo& caramelo ){
+
+	output << "Nombre Golosina: "<< caramelo.getNombre()<<"\n"
+			<<"Precio: "<< caramelo.getPrecio()<<"\n"
+			<<"Nombre Fabricante: " << caramelo.getNombre_fabricante()<<"\n"
+			<<"Origen: "<< caramelo.getOrigen()<<"\n"
+			<<"Tipo "<< caramelo.getTipo();
+
+	return output ;
 }
 
 } /* namespace std */

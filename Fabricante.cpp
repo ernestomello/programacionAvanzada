@@ -7,7 +7,7 @@
 
 #include "Fabricante.h"
 #include "Golosina.h"
-#define CANT_GOLOSINAS 50
+
 namespace std{
 
 Fabricante::Fabricante(){
@@ -65,9 +65,14 @@ void Fabricante::setPais(string pais){
 void Fabricante::setOrigen(EnumOrigen origen){
 	this->origen = origen;
 }
-
-Golosina Fabricante::getGolosinas(int x){
-	return golosinas[x];
+void Fabricante::setGolosinas(Golosina *golosina){
+	this->golosinas = golosina;
+}
+Golosina* Fabricante::getPunteroGolosinas(int x){
+	return &golosinas[x];
+}
+Golosina Fabricante::getGolosinas(int a){
+	return golosinas[a];
 }
 
 }
