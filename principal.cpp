@@ -39,21 +39,53 @@ void ingresoDeFabricantes();
 void ingresoDeGolosinas();
 void borrarFabricante();
 void borrarGolosina();
+void menu();
 
 using namespace std;
 
 
 
 int main(int argc, char *argv[]){
+int opcion= 0;
 string* nombresFabricantes;
+string nombre_fabricante;
+DtGolosina** golosinas_fabricante;// = new DtGolosina[CANT_GOLOSINAS]();
+int cant_golosinas = CANT_GOLOSINAS;
 
-limpiarFabricantes();
-ingresoDeFabricantes();
 
-nombresFabricantes = listarFabricantes(cant_fab);
 
-for (int i = 0; i <= cant_fab;i++)
-	cout<<"fabricante "<<nombresFabricantes[i]<<"\n";
+while (opcion != 0){
+
+	menu();
+	cin>>opcion;
+	switch (opcion){
+	case 1:
+		limpiarFabricantes();
+		ingresoDeFabricantes();
+		break;
+	case 2:
+		nombresFabricantes = listarFabricantes(cant_fab);
+		for (int i = 0; i <= cant_fab;i++)
+			cout<<"fabricante "<<nombresFabricantes[i]<<"\n";
+		break;
+	case 3:
+		ingresoDeGolosinas();
+		break;
+	case 4:
+		borrarGolosina();
+		break;
+	case 5:
+		 golosinas_fabricante = obtenerInfoGolosinasPorFabricante(nombre_fabricante, cant_golosinas);
+		 for (int j= 0 ; j <= cant_golosinas;j++)
+			 cout<<golosinas_fabricante[j];
+		break;
+	}
+
+}
+
+
+
+
 
 }
 
@@ -222,9 +254,10 @@ DtGolosina** obtenerInfoGolosinasPorFabricante(string nombre_fabricante, int& ca
 
 
 void menu(){
-	cout<<"Ingrese 1 para agregar fabricante"<<endl;
-	cout<<"Ingrese 2 para mostrar la lista de fabricantes"<<endl;
-	cout<<"Ingrese 3 para agregar golosina a un fabricante especifico"<<endl;
-	cout<<"Ingrese 4 para mostrar informacion de las golosinas segun su fabricante"<<endl;
+	cout<<"1 - Agregar fabricante"<<endl;
+	cout<<"2 - Mostrar la lista de fabricantes"<<endl;
+	cout<<"3 - Agregar golosina a un fabricante especifico"<<endl;
+	cout<<"4 - Borrar golosina a un fabricante especifico"<<endl;
+	cout<<"5 - Mostrar informacion de las golosinas segun su fabricante"<<endl;
 	cout<<"0 - Salir"<<endl;
 }
