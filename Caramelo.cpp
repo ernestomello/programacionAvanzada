@@ -13,8 +13,8 @@ using namespace std;
 Caramelo::Caramelo() {
 	// TODO Apéndice de constructor generado automáticamente
 }
-Caramelo::Caramelo(string nombre, double precio, Date fecha, string sabor){
-	Golosina(nombre, precio, fecha);
+Caramelo::Caramelo(string nombre, double precio, Date fecha, string sabor):
+	Golosina(nombre, precio, fecha){
 	this->sabor = sabor;
 }
 Caramelo::~Caramelo() {

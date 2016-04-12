@@ -14,8 +14,8 @@ DtCaramelo::DtCaramelo(){
 	this->sabor = sabor;
 
 }
-DtCaramelo::DtCaramelo(double precio, string nombre, Date fecha_venc,string nombre_fabricante, string origen, string sabor) {
-	DtGolosina(precio,nombre,fecha_venc,nombre_fabricante,origen);
+DtCaramelo::DtCaramelo(double precio, string nombre, Date fecha_venc,string nombre_fabricante, string origen, string sabor):
+	DtGolosina(precio,nombre,fecha_venc,nombre_fabricante,origen){
 	this->sabor = sabor;
 	// TODO Apéndice de constructor generado automáticamente
 

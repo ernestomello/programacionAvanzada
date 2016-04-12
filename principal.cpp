@@ -46,7 +46,7 @@ using namespace std;
 
 
 int main(int argc, char *argv[]){
-int opcion= 0;
+int opcion= -1;
 string* nombresFabricantes;
 string nombre_fabricante;
 DtGolosina** golosinas_fabricante;// = new DtGolosina[CANT_GOLOSINAS]();
@@ -65,7 +65,7 @@ while (opcion != 0){
 		break;
 	case 2:
 		nombresFabricantes = listarFabricantes(cant_fab);
-		for (int i = 0; i <= cant_fab;i++)
+		for (int i = 0; i < cant_fab;i++)
 			cout<<"fabricante "<<nombresFabricantes[i]<<"\n";
 		break;
 	case 3:
@@ -76,7 +76,7 @@ while (opcion != 0){
 		break;
 	case 5:
 		 golosinas_fabricante = obtenerInfoGolosinasPorFabricante(nombre_fabricante, cant_golosinas);
-		 for (int j= 0 ; j <= cant_golosinas;j++)
+		 for (int j= 0 ; j < cant_golosinas;j++)
 			 cout<<golosinas_fabricante[j];
 		break;
 	}
@@ -178,7 +178,7 @@ void borrarGolosina(){
 void agregarGolosina(string nombre_fabricante, DtGolosina& golosina){
 string sabor;
 char cara;
-Golosina* alfajor;
+Golosina* golo;
 //Golosina* caramelo;
 //Fabricante* fabricantes;
 		cout<<"Es un Caramelo ?";
@@ -187,33 +187,32 @@ Golosina* alfajor;
 
 			cout<<"Ingrese Sabor";
 			cin>>sabor;
-			alfajor = new Caramelo(golosina.getNombre(),golosina.getPrecio(),golosina.getFecha_venc(),sabor);
+			golo = new Caramelo(golosina.getNombre(),golosina.getPrecio(),golosina.getFecha_venc(),sabor);
 
 		}else{
-			alfajor = new Alfajor(golosina.getNombre(),golosina.getPrecio(),golosina.getFecha_venc());
+			golo = new Alfajor(golosina.getNombre(),golosina.getPrecio(),golosina.getFecha_venc());
 		}
-		for (int i = 0; i<=MAX_FABRICANTES;i++){
-				if(strcmp(fabricantes[i]->getNombre().c_str(), nombre_fabricante.c_str())==0){
+		for (int i = 0; i<MAX_FABRICANTES;i++){
+				if(fabricantes[i]->getNombre().compare(nombre_fabricante)==0){
 					if( !fabricantes[i]->tieneGolosina(golosina.getNombre())){
-						for (int j = 0; j <= CANT_GOLOSINAS; j++ ){
+						for (int j = 0; j < CANT_GOLOSINAS; j++ ){
 							if (fabricantes[i]->getPunteroGolosinas(j) == NULL)
-								fabricantes[i]->setGolosinas(alfajor);
+								fabricantes[i]->setGolosinas(golo,j);
 						}
 					}
 				}
 			}
-
-
-
 }
+
+
 void eliminarGolosina(string nombre_fabricante, string nombre_golosina){
 // Recorro el array de fabricantes y comparo los nombres.
 //Si son iguales, pregunto si tiene golosina para eliminarla o decir que no tiene golosina
-for(int i=0; i<=MAX_FABRICANTES; i++){
-	if(strcmp(fabricantes[i]->getNombre().c_str(), nombre_fabricante.c_str())==0){
+for(int i=0; i<MAX_FABRICANTES; i++){
+	if(fabricantes[i]->getNombre().compare(nombre_fabricante)==0){
 		if(fabricantes[i]->tieneGolosina(nombre_golosina)){
-			for(int j=0; j<=CANT_GOLOSINAS; j++){
-				if(strcmp(fabricantes[i]->getGolosinas(j).getNombre().c_str(),nombre_golosina.c_str()))
+			for(int j=0; j<CANT_GOLOSINAS; j++){
+				if(fabricantes[i]->getPunteroGolosinas(j)->getNombre().compare(nombre_golosina)== 0)
 				delete fabricantes[i]->getPunteroGolosinas(j);
 
 			}
@@ -229,17 +228,17 @@ DtGolosina** obtenerInfoGolosinasPorFabricante(string nombre_fabricante, int& ca
 	DtGolosina** arreglo_golosinas = new DtGolosina* [cant_golosinas]();
 	string origen;
 
-	for (i = 0; i <= cant_fab; i++){
-		if (strcmp(fabricantes[i]->getNombre().c_str(),nombre_fabricante.c_str())==0){
+	for (i = 0; i < cant_fab; i++){
+		if (fabricantes[i]->getNombre().compare(nombre_fabricante)==0){
 			for (k=0; k<cant_golosinas; k++){
 				if (fabricantes[i]->getOrigen() == Importado )
 					origen ="Importado";
 				else
 					origen = "Nacional" ;
 
-				DtGolosina* auxiliar = new  DtGolosina (fabricantes[i]->getGolosinas(k).getPrecio(),
-						fabricantes[i]->getGolosinas(k).getNombre(),
-						fabricantes[i]->getGolosinas(k).getFecha_venc(),
+				DtGolosina* auxiliar = new  DtGolosina (fabricantes[i]->getPunteroGolosinas(k)->getPrecio() ,
+						fabricantes[i]->getPunteroGolosinas(k)->getNombre(),
+						fabricantes[i]->getPunteroGolosinas(k)->getFecha_venc(),
 						fabricantes[i]->getNombre(),
 						origen );
 

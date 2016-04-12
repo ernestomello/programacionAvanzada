@@ -15,7 +15,7 @@ Fabricante::Fabricante(){
 	this->rut = "";
 	this->origen = Nacional;
 	this->pais = "";
-	this->golosinas = new Golosina[CANT_GOLOSINAS]();
+	//this->golosinas = new Golosina[CANT_GOLOSINAS]();
 	// TODO Apéndice de constructor generado automáticamente
 }
 
@@ -24,7 +24,10 @@ Fabricante::Fabricante(string nombre, string rut, EnumOrigen origen, string pais
 	this->rut = rut;
 	this->origen = origen;
 	this->pais = pais;
-	this->golosinas = new Golosina[CANT_GOLOSINAS]();
+	//this->golosinas = new Golosina[CANT_GOLOSINAS]();
+	for (int i = 0;i<CANT_GOLOSINAS;i++){
+		golosinas[i] = NULL;
+	}
 	// TODO Apéndice de constructor generado automáticamente
 }
 Fabricante::~Fabricante(){
@@ -46,8 +49,8 @@ EnumOrigen Fabricante::getOrigen(){
 
 bool Fabricante::tieneGolosina(string golosina){
 
-	for (int i = 0; i<= CANT_GOLOSINAS; i++){
-		if (strcmp(this->golosinas[i].getNombre().c_str(), golosina.c_str()) == 0)
+	for (int i = 0; i< CANT_GOLOSINAS; i++){
+		if (this->golosinas[i] != NULL && this->golosinas[i]->getNombre().compare( golosina) == 0)
 			return true;
 	}
  return false;
@@ -65,14 +68,14 @@ void Fabricante::setPais(string pais){
 void Fabricante::setOrigen(EnumOrigen origen){
 	this->origen = origen;
 }
-void Fabricante::setGolosinas(Golosina *golosina){
-	this->golosinas = golosina;
+void Fabricante::setGolosinas(Golosina *golosina, int x){
+	this->golosinas[x] = golosina;
 }
 Golosina* Fabricante::getPunteroGolosinas(int x){
-	return &golosinas[x];
+	return golosinas[x];
 }
-Golosina Fabricante::getGolosinas(int a){
+/*Golosina Fabricante::getGolosinas(int a){
 	return golosinas[a];
 }
-
+*/
 }

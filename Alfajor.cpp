@@ -10,8 +10,8 @@
 
 namespace std {
 
-Alfajor::Alfajor(string nombre, double precio, Date fecha) {
-	Golosina(nombre,precio,fecha);
+Alfajor::Alfajor(string nombre, double precio, Date fecha) :
+	Golosina(nombre,precio,fecha){
 	// TODO Apéndice de constructor generado automáticamente
 }
 

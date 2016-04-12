@@ -14,8 +14,8 @@ DtAlfajor::DtAlfajor(){
 	DtGolosina();
 }
 
-DtAlfajor::DtAlfajor(double precio,string nombre,Date fecha_venc, string nombre_fabricante, string origen){
-	DtGolosina(precio,nombre,fecha_venc,nombre_fabricante,origen);
+DtAlfajor::DtAlfajor(double precio,string nombre,Date fecha_venc, string nombre_fabricante, string origen):
+	DtGolosina(precio,nombre,fecha_venc,nombre_fabricante,origen){
 
 }
 

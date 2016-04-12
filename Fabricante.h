@@ -26,7 +26,7 @@ private:
 	string rut;
 	EnumOrigen origen;
 	string pais;
-	Golosina* golosinas;
+	Golosina* golosinas[CANT_GOLOSINAS];
 
 public:
 	Fabricante();
@@ -36,14 +36,14 @@ public:
 	string getRut();
 	string getPais();
 	EnumOrigen getOrigen();
-	Golosina getGolosinas(int a);
+	//Golosina getGolosinas(int a);
 	Golosina* getPunteroGolosinas(int x);
 	bool tieneGolosina(string golosina);
 	void setNombre(string nombre);
 	void setRut(string rut);
 	void setPais(string pais);
 	void setOrigen(EnumOrigen origen);
-	void setGolosinas(Golosina *golosina);
+	void setGolosinas(Golosina *golosina,int x);
 
 
 };
