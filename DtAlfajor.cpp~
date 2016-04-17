@@ -49,11 +49,11 @@ string DtAlfajor::getTipo(){
 }
 ostream &operator<< (ostream& output, DtAlfajor* &alfajor ){
 
-	output 	<<"Nombre Golosina: "<< alfajor->getNombre()<<"\n"
+	output <<"Tipo "<< alfajor->getTipo()
+			<<"Nombre Golosina: "<< alfajor->getNombre()<<"\n"
 			<<"Precio: "<< alfajor->getPrecio()<<"\n"
 			<<"Nombre Fabricante: " << alfajor->getNombre_fabricante()<<"\n"
-			<<"Origen: "<< alfajor->getOrigen()<<"\n"
-			<<"Tipo "<< alfajor->getTipo();
+			<<"Origen: "<< alfajor->getOrigen()<<"\n";
 	return output ;
 }
 

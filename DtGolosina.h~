@@ -31,8 +31,7 @@ public:
 	virtual Date getFecha_venc();
 	virtual string getNombre_fabricante();
 	virtual string getOrigen();
-	friend ostream &operator<< (ostream& output,DtGolosina* &golosina );
-
+	friend ostream &operator<< (ostream& output, const DtGolosina & golosina );
 
 };
 

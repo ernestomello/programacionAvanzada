@@ -26,7 +26,7 @@ public:
 	string getNombre_fabricante();
 	string getOrigen();
 	string getTipo();
-	friend ostream &operator<< (ostream& output, DtAlfajor* &alfajor );
+	friend ostream &operator<< (ostream& output, const DtAlfajor& alfajor );
 
 };
 

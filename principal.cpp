@@ -12,6 +12,7 @@
 #include <fstream>
 #include <string.h>
 #include <stdio.h>
+#include <stdexcept>
 
 #define MAX_FABRICANTES 10
 
@@ -40,6 +41,7 @@ void ingresoDeGolosinas();
 void borrarFabricante();
 void borrarGolosina();
 void menu();
+int cantidadGolosinas(string nombre_fabricante);
 
 using namespace std;
 
@@ -50,7 +52,7 @@ int opcion= -1;
 string* nombresFabricantes;
 string nombre_fabricante;
 DtGolosina** golosinas_fabricante;// = new DtGolosina[CANT_GOLOSINAS]();
-int cant_golosinas = CANT_GOLOSINAS;
+int cant_golosinas;
 
 
 
@@ -75,18 +77,16 @@ while (opcion != 0){
 		borrarGolosina();
 		break;
 	case 5:
+		cout<<"Ingrese Nombre Fabricante : ";
+		cin>>nombre_fabricante;
+		cant_golosinas= cantidadGolosinas(nombre_fabricante);
 		 golosinas_fabricante = obtenerInfoGolosinasPorFabricante(nombre_fabricante, cant_golosinas);
 		 for (int j= 0 ; j < cant_golosinas;j++)
 			 cout<<golosinas_fabricante[j];
 		break;
+
 	}
-
 }
-
-
-
-
-
 }
 
 void limpiarFabricantes(){
@@ -109,7 +109,7 @@ while ( sigue != 'n'){
 	cin>>rut;
 	cout<<"\nIngrese Origen (Nacional, Importado) : ";
 	cin>>origen;
-	if (strcmp(origen.c_str(),"Nacional") != 0  )
+	if (origen.compare("Nacional") != 0  )
 		origenE=Importado;
 	else
 		origenE = Nacional;
@@ -145,20 +145,43 @@ void ingresoDeGolosinas(){
 	string nombre_fabricante;
 	char sigue;
 	int dd, mm, aaaa ;
+	int comp=0;
 
 
 	while ( sigue != 'n'){
 		cout<<"Ingreso de Golosinas\n";
-		cout<<"Ingrese Nombre Fabricante: ";
-		cin>>nombre_fabricante;
-		cout<<"Ingrese Nombre : ";
+		do{
+				cout<<"Ingrese Nombre Fabricante: "<<endl;
+				cin>>nombre_fabricante;
+				for (int i = 0; fabricantes[i]!=NULL;i++){
+					if(fabricantes[i]->getNombre().compare(nombre_fabricante) == 0){
+						comp = 1;
+					}
+				}
+				if (comp == 0)
+					cout<<"El Fabricante no existe"<<endl;
+				else
+					cout<<"Fabricante existente"<<endl;
+				}while(comp == 0);
+
+		cout<<"Ingrese Nombre Golosina: ";
 				cin>>nombre;
 				cout<<"\nIngrese Precio : ";
 				cin>>precio;
-				cout<<"\nIngrese Fecha Venc.: ";
-				cin>>dd;
-				cin>>mm;
-				cin>>aaaa;
+				// TRY CATCH PARA LA FECHA
+				do{
+					cout<<"Ingrese Fecha Venc.: "<<endl;
+					cin>>dd;
+					cin>>mm;
+					cin>>aaaa;
+					try {
+						if (mm < 1 || mm>12 || aaaa<1900 || dd<1 || dd>31 )
+							throw std::invalid_argument("Fecha mal ingresada");
+					}
+					catch(const std::invalid_argument& e){
+						cout<<"Fecha mal ingresada, ingrese nuevamente los valores, en el orden día/mes/año"<<endl;
+					}
+					}while(mm < 1 || mm>12 || aaaa<1900 || dd<1 || dd>31 );
 				Date* fecha_venc= new Date(dd,mm,aaaa);
 
 				nuevaGol = new DtGolosina(precio,nombre,fecha_venc,nombre_fabricante,origen);
@@ -172,7 +195,13 @@ void borrarFabricante(){
 	;
 }
 void borrarGolosina(){
-	;
+	string nombre_fabricante,nombre_golosina;
+	cout<<"Eliminar Golosina\n\n";
+	cout<<"Ingrese Nombre Fabricante: ";
+	cin>>nombre_fabricante;
+	cout<<"\nIngrese Nombre Golosina: ";
+	cin>>nombre_golosina;
+	eliminarGolosina(nombre_fabricante,nombre_golosina);
 }
 
 void agregarGolosina(string nombre_fabricante, DtGolosina& golosina){
@@ -196,10 +225,13 @@ Golosina* golo;
 				if(fabricantes[i]->getNombre().compare(nombre_fabricante)==0){
 					if( !fabricantes[i]->tieneGolosina(golosina.getNombre())){
 						for (int j = 0; j < CANT_GOLOSINAS; j++ ){
-							if (fabricantes[i]->getPunteroGolosinas(j) == NULL)
+							if (fabricantes[i]->getPunteroGolosinas(j) == NULL){
 								fabricantes[i]->setGolosinas(golo,j);
+								break;
+							}
 						}
 					}
+					break;
 				}
 			}
 }
@@ -209,15 +241,16 @@ void eliminarGolosina(string nombre_fabricante, string nombre_golosina){
 // Recorro el array de fabricantes y comparo los nombres.
 //Si son iguales, pregunto si tiene golosina para eliminarla o decir que no tiene golosina
 for(int i=0; i<MAX_FABRICANTES; i++){
-	if(fabricantes[i]->getNombre().compare(nombre_fabricante)==0){
+	if(fabricantes[i] != NULL && fabricantes[i]->getNombre().compare(nombre_fabricante)==0){
 		if(fabricantes[i]->tieneGolosina(nombre_golosina)){
 			for(int j=0; j<CANT_GOLOSINAS; j++){
-				if(fabricantes[i]->getPunteroGolosinas(j)->getNombre().compare(nombre_golosina)== 0)
+				if(fabricantes[i]->getPunteroGolosinas(j)!= NULL && fabricantes[i]->getPunteroGolosinas(j)->getNombre().compare(nombre_golosina)== 0)
 				delete fabricantes[i]->getPunteroGolosinas(j);
-
+				//fabricantes[i]->getPunteroGolosinas(j) = NULL;
+				break;
 			}
 		}
-
+		break;
 	}
 }
 }
@@ -229,20 +262,24 @@ DtGolosina** obtenerInfoGolosinasPorFabricante(string nombre_fabricante, int& ca
 	string origen;
 
 	for (i = 0; i < cant_fab; i++){
-		if (fabricantes[i]->getNombre().compare(nombre_fabricante)==0){
-			for (k=0; k<cant_golosinas; k++){
-				if (fabricantes[i]->getOrigen() == Importado )
-					origen ="Importado";
+		if (fabricantes[i]!=NULL && fabricantes[i]->getNombre().compare(nombre_fabricante)==0){
+			for (k=0; k<CANT_GOLOSINAS; k++){
+				if (fabricantes[i]->getPunteroGolosinas(k) != NULL){
+					if (fabricantes[i]->getOrigen() == Importado )
+						origen ="Importado";
+					else
+						origen = "Nacional" ;
+
+					DtGolosina* auxiliar = new  DtGolosina (fabricantes[i]->getPunteroGolosinas(k)->getPrecio() ,
+							fabricantes[i]->getPunteroGolosinas(k)->getNombre(),
+							fabricantes[i]->getPunteroGolosinas(k)->getFecha_venc(),
+							fabricantes[i]->getNombre(),
+							origen );
+
+					arreglo_golosinas[k] = auxiliar ;
+				}
 				else
-					origen = "Nacional" ;
-
-				DtGolosina* auxiliar = new  DtGolosina (fabricantes[i]->getPunteroGolosinas(k)->getPrecio() ,
-						fabricantes[i]->getPunteroGolosinas(k)->getNombre(),
-						fabricantes[i]->getPunteroGolosinas(k)->getFecha_venc(),
-						fabricantes[i]->getNombre(),
-						origen );
-
-				arreglo_golosinas[k] = auxiliar ;
+					break;
 			}
 		}
 		else
@@ -259,4 +296,18 @@ void menu(){
 	cout<<"4 - Borrar golosina a un fabricante especifico"<<endl;
 	cout<<"5 - Mostrar informacion de las golosinas segun su fabricante"<<endl;
 	cout<<"0 - Salir"<<endl;
+}
+
+int cantidadGolosinas(string nombre_fabricante){
+int contar=0;
+
+for (int i = 0; i < cant_fab; i++){
+		if (fabricantes[i]!=NULL && fabricantes[i]->getNombre().compare(nombre_fabricante)==0){
+	for(int j=0; j<CANT_GOLOSINAS; j++){
+					if(fabricantes[i]->getPunteroGolosinas(j)!=NULL) // nombre_golosina puntero
+						contar++;
+				}
+		}
+}
+return contar;
 }

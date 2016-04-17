@@ -50,10 +50,10 @@ string DtGolosina::getOrigen(){
 }
 ostream &operator<< (ostream& output, DtGolosina* &golosina ){
 
-	output << "Nombre Golosina: "<< golosina->nombre <<"\n"
-			<<"Precio: "<< golosina->precio <<"\n"
-			<<"Nombre Fabricante: " << golosina->nombre_fabricante <<"\n"
-			<<"Origen: "<< golosina->origen <<"\n";
+	output << "Nombre Golosina: "<< golosina.getNombre()<<"\n"
+			<<"Precio: "<< golosina.getPrecio()<<"\n"
+			<<"Nombre Fabricante: " << golosina.getNombre_fabricante()<<"\n"
+			<<"Origen: "<< golosina.getOrigen()<<"\n";
 			//<<"Tipo "<< golosina.getTipo();
 
 	return output;

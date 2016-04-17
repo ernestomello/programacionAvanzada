@@ -24,28 +24,12 @@ Date::Date(Date* fecha){
 }
 
 Date::Date(int dd,int mm, int aaaa) {
-	try {
-	if (mm > 0 && mm<=12 )
-		this->mm = mm;
-	else
-		throw(mm);
 
-	if (aaaa >= 1900)
-			this->aaaa = aaaa;
-	else
-		throw (aaaa);
-
-	if (dd > 0 && dd<= 31)
-			this->dd = dd;
-		else
-			throw (dd);
-	}
-	catch(int mm){
-		cout << "Fecha mal ingresada";
-	}
+this->mm = mm;
+this->aaaa = aaaa;
+this->dd = dd;
+// TODO Apéndice de constructor generado automáticamente
 }
-	// TODO Apéndice de constructor generado automáticamente
-
 
 Date::~Date() {
 	// TODO !CodeTemplates.destructorstub.tododesc!

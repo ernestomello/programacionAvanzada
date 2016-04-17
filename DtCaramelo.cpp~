@@ -48,11 +48,13 @@ string DtCaramelo::getTipo(){
 }
 ostream &operator<< (ostream& output, DtCaramelo* &caramelo ){
 
-	output  <<"Nombre Golosina: "<< caramelo->getNombre()<<"\n"
-			<<"Precio: "<< caramelo->getPrecio()<<"\n"
-			<<"Nombre Fabricante: " << caramelo->getNombre_fabricante()<<"\n"
-			<<"Origen: "<< caramelo->getOrigen()<<"\n"
-			<< "Tipo "<< caramelo->getTipo();
+	output << "Tipo "<< caramelo.getTipo();
+			/*<<"Nombre Golosina: "<< caramelo.getNombre()<<"\n"
+			<<"Precio: "<< caramelo.getPrecio()<<"\n"
+			<<"Nombre Fabricante: " << caramelo.getNombre_fabricante()<<"\n"
+			<<"Origen: "<< caramelo.getOrigen()<<"\n";*/
+
+			//
 
 	return output ;
 }
